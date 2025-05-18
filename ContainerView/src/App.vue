@@ -9,7 +9,9 @@
 
 <template>
     <WebHead></WebHead>
-    <RouterView/>
+    <transition name="fade" mode="out-in">
+        <RouterView/>
+    </transition>
     <WebFooter></WebFooter>
 </template>
 

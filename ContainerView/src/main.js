@@ -12,6 +12,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap';
 import 'axios'; // 异步请求
 
+// 导入全局样式
+import './assets/styles/global.css';
+
 // 创建web应用 挂载html
 const app = createApp(App);
 app.use(createPinia());
