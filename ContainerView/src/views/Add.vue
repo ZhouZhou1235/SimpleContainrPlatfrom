@@ -150,6 +150,8 @@ textarea.form-control {
                     <input type="text" id="containerTitle" v-model="containerForm.title" class="form-control">
                     <label class="form-label" for="containerInfo">描述</label>
                     <textarea id="containerInfo" v-model="containerForm.info" class="form-control"></textarea>
+                    <label class="form-label" for="containerPosition">存放位置</label>
+                    <input type="text" id="containerPosition" v-model="containerForm.position" class="form-control">
                 </div>
                 <div class="col-sm-6">
                     <div>
@@ -194,6 +196,7 @@ textarea.form-control {
                 title: '',
                 info: '',
                 cargoText: '',
+                position: '',
             },
             companyForm: {
                 name: '',

@@ -21,6 +21,7 @@
                   <p style="white-space: pre-line;">
                       {{ containerData.container.info }}
                   </p>
+                  <p>位置 {{ containerData.container.position }}</p>
                 </div>
                 <div class="info-section date-info">
                   <h3><i class="fas fa-calendar-alt"></i> 日期信息</h3>

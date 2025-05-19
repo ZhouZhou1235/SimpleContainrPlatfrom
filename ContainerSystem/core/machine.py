@@ -207,8 +207,8 @@ def work_addContainer():
     companyid = request.form.get('companyid')
     title = request.form.get('title')
     info = request.form.get('info')
+    position = request.form.get('position')
     cargoText = request.form.get('cargoText')
-    if title=='': return 0
     if Tools.haveLogin()==0: return 0
     containerid = str(random.randint(100000000,1000000000))
     try:
@@ -218,8 +218,8 @@ def work_addContainer():
             username=session['username'],
             title=title,
             info=info,
+            position=position,
         ))
-        print('db.session.add(Container(')
     except Exception as e:
         print(e)
         return 0
@@ -268,11 +268,10 @@ def work_addCompany():
     return 1
 
 def work_containerExit():
-    if Tools.haveLogin()==0: return 0
+    if session.get('admin')==None: return 0
     containerid = request.form.get('containerid')
     if not containerid: return 0
-    username = session['username']
-    result = Container.query.filter_by(containerid=containerid,username=username).all()
+    result = Container.query.filter_by(containerid=containerid).all()
     if len(result)==0: return 0
     record = ContainerRegister.query.get(result[0].id)
     record.exittime = datetime.datetime.now()

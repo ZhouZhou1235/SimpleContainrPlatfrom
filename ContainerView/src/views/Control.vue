@@ -336,7 +336,10 @@ textarea.form-control {
                                     {{ item.title }}
                                 </RouterLink>
                                 <span>描述: {{ item.info }}</span>
-                                <span v-if="!item.exittime">{{ toNormalDate(item.entertime) }}入库</span>
+                                <span v-if="!item.exittime">
+                                  {{ toNormalDate(item.entertime) }}入库
+                                  <button @click="containerExit(item.containerid)" class="btn">离库</button>
+                                </span>
                                 <span v-else>{{ toNormalDate(item.exittime) }}离库</span>
                             </div>
                         </div>
@@ -498,6 +501,14 @@ textarea.form-control {
             toNormalDate(time){
                 let date = new Date(time);
                 return date.toLocaleString();
+            },
+            containerExit(containerid){
+                postRequest(urls.containerExit,{'containerid':containerid}).then(res=>{
+                  console.log(res);  
+                  if(res==1){
+                      this.getContainers();
+                    }
+                });
             },
         },
         mounted(){

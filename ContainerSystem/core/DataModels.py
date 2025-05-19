@@ -77,6 +77,7 @@ class Container(db.Model):
     username = Column(String(100),nullable=False)
     title = Column(String(100),nullable=False)
     info = Column(String(1000),nullable=False)
+    position = Column(String(100),nullable=False)
 
 class ContainerRegister(db.Model):
     @property

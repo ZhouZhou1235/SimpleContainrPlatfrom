@@ -41,10 +41,9 @@ import { GStoreArea } from '@/stores/GStoreArea';
                 </RouterLink>
               </h3>
               <p class="card-text">{{ item.info }}</p>
-              <span v-if="!item.exittime">
-                <button @click="containerExit(item.containerid)" class="btn">离库</button>
+              <span v-if="item.exittime">
+                {{ toNormalDate(item.exittime) }}离库
               </span>
-              <span v-else>{{ toNormalDate(item.exittime) }}离库</span>
             </div>
           </div>
         </div>
@@ -92,13 +91,6 @@ import { GStoreArea } from '@/stores/GStoreArea';
                 getRequest(urls.getCompanys).then(res=>{
                     if(res!='no data'){
                         this.companyArray = res.data;
-                    }
-                });
-            },
-            containerExit(containerid){
-                postRequest(urls.containerExit,{'containerid':containerid}).then(res=>{
-                    if(res==1){
-                        this.getMyContainers();
                     }
                 });
             },
